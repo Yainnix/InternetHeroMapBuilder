@@ -1,5 +1,6 @@
+package com.yandev.mapbuilder;
 
-
+import com.yandev.mapbuilder.controller.WindowStartController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,7 @@ public class Main extends Application {
     private Dimension screenSize;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/resources/main.fxml"));
         primaryStage.setTitle("Internet Hero Map Builder");
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -27,8 +28,7 @@ public class Main extends Application {
     }
 
     private void showStartWindow(Stage primaryStage) throws IOException {
-
-        Parent startWindowLayout = FXMLLoader.load(getClass().getResource("window_start.fxml"));
+        Parent startWindowLayout = FXMLLoader.load(getClass().getResource("/resources/window_start.fxml"));
         StackPane secondaryLayout = new StackPane();
         secondaryLayout.getChildren().add(startWindowLayout);
         Scene secondScene = new Scene(secondaryLayout, 600, 400);
@@ -49,8 +49,8 @@ public class Main extends Application {
         startWindow.initOwner(primaryStage);
 
         // Set position of second window, related to primary window.
-        startWindow.setX(primaryStage.getX());
-        startWindow.setY(primaryStage.getY());
+        startWindow.setX(primaryStage.getX() + screenSize.width/2.8);
+        startWindow.setY(primaryStage.getY() + screenSize.height/3.0);
 
         startWindow.setOnCloseRequest(windowEvent -> {
             System.exit(0);

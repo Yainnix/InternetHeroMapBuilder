@@ -1,3 +1,6 @@
+package com.yandev.mapbuilder.controller;
+
+import com.yandev.mapbuilder.listener.OnWindowStartCompletedListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -1,5 +1,9 @@
+package com.yandev.mapbuilder.controller;
 
+import com.yandev.mapbuilder.utils.BitmapHandler;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Menu;
@@ -16,6 +20,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainController {
@@ -82,6 +87,7 @@ public class MainController {
 
     private final int TILE_SELECTOR_LENGTH = 4;
     private ImageView selectedTile;
+    private int[][] mapValues;
 
     @FXML
     void initialize() {
@@ -92,7 +98,15 @@ public class MainController {
             initTileSelector(filePath, tileSize);
 
         });
+
+        menuFileSaveAs.setOnAction(actionEvent -> {
+
+        });
     }
+
+
+
+
     private void initTileSelector(String filePath, int tileSize){
         try {
             // Crop tile from selected path to Buffered ArrayList
@@ -117,8 +131,9 @@ public class MainController {
                 }
             }
 
+
             gridTileset.setOnMouseClicked(mouseEvent -> {
-               selectedTile =  (ImageView) mouseEvent.getTarget();
+
                 System.out.println("Imageview selected " + selectedTile);
             });
         } catch (IOException e) {
@@ -142,6 +157,7 @@ public class MainController {
                 gridMap.add(cell, x, y);
             }
         }
+        mapValues = new int[columnsOfMap][rowsOfMap];
         gridMap.setOnMouseClicked(mouseEvent -> {
             Object clickedObject =  mouseEvent.getTarget();
             if(clickedObject instanceof Pane && mouseEvent.getButton().name().equals("PRIMARY") && selectedTile != null){
@@ -149,6 +165,7 @@ public class MainController {
                 imageView.setImage(selectedTile.getImage());
                 Pane clickedPane = (Pane) clickedObject;
                 clickedPane.getChildren().add(imageView);
+
             } else if(clickedObject instanceof ImageView && mouseEvent.getButton().name().equals("SECONDARY")) {
                 ImageView clickedView = (ImageView) clickedObject;
                 ImageView emptyImageView = new ImageView();
@@ -156,6 +173,12 @@ public class MainController {
                 }
             int column = GridPane.getColumnIndex((Node) clickedObject);
             int row = GridPane.getRowIndex((Node) clickedObject);
+
+            int tileSelectorColumn = GridPane.getColumnIndex(selectedTile);
+            int tileSelectorRow = GridPane.getRowIndex(selectedTile);
+
+            String concatNumber = (tileSelectorColumn + "" + tileSelectorRow);
+            mapValues[column][row] = Integer.parseInt(concatNumber);
             textViewCurrentCoordinates.setText(String.format("x%d:y%d", row, column));
         });
 
