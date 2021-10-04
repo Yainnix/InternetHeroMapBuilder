@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yandev.mapbuilder.controller.MainController">
+
+<VBox fx:id="mainLayout"  prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yandev.mapbuilder.controller.MainController">
     <children>
-        <SplitPane dividerPositions="0.5" prefHeight="40.0" prefWidth="806.0">
+        <SplitPane  dividerPositions="0.5" prefHeight="40.0" prefWidth="806.0">
             <items>
                 <MenuBar pickOnBounds="false" scaleShape="false">
                     <menus>
@@ -33,7 +44,7 @@
                 <Text fx:id="textViewCurrentCoordinates" strokeType="OUTSIDE" strokeWidth="0.0" text="x0:y0" />
             </items>
         </SplitPane>
-        <SplitPane dividerPositions="0.3258145363408521" prefHeight="594.0" prefWidth="800.0">
+        <SplitPane dividerPositions="0.13607924921793535" pickOnBounds="false" prefHeight="1047.0" prefWidth="1920.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="559.0" prefWidth="199.0">
                     <children>
@@ -57,11 +68,11 @@
                         </TabPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="986.0" prefWidth="1653.0">
                     <children>
-                        <ScrollPane fx:id="scrollViewMap" prefHeight="575.0" prefWidth="535.0">
+                        <ScrollPane fx:id="scrollViewMap" layoutX="-6.0" prefHeight="1042.0" prefWidth="1659.0">
                             <content>
-                                <GridPane fx:id="gridMap" gridLinesVisible="true" prefHeight="0" prefWidth="0"/>
+                                <GridPane fx:id="gridMap" gridLinesVisible="true" prefHeight="0" prefWidth="0" />
                             </content>
                         </ScrollPane>
                     </children></AnchorPane>

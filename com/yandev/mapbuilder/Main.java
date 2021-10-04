@@ -21,6 +21,7 @@ public class Main extends Application {
         primaryStage.setTitle("Internet Hero Map Builder");
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
+        screenSize = new Dimension(screenSize.width/2, screenSize.height/2);
         primaryStage.setScene(new Scene(root, screenSize.width, screenSize.height- (int) (screenSize.height/20) ));
         primaryStage.setResizable(false);
         primaryStage.show();
